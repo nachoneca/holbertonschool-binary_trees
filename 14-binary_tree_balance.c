@@ -5,12 +5,14 @@ int b_height(const binary_tree_t *tree)
 	size_t count_l = 0, count_r = 0;
 
 	if (tree == NULL)
-		return (0);
+		return (-1);
 
 	if (tree->left)
-		count_l = 1 + binary_tree_balance(tree->left);
+		count_l = 1 + b_height(tree->left);
 	if (tree->right)
-		count_r = 1 + binary_tree_balance(tree->right);
+		count_r = 1 + b_height(tree->right);
+	printf("count_l = %ld\n", count_l);
+	printf("count_r = %ld\n", count_r);
 	return (count_l > count_r ? count_l : count_r);
 }
 
@@ -23,6 +25,6 @@ int binary_tree_balance(const binary_tree_t *tree)
 {
 	if (tree == NULL)
 		return (0);
-
+	printf("b_hei = %i\n", b_height(tree->right));
 	return (b_height(tree->left) - b_height(tree->right));
 }
